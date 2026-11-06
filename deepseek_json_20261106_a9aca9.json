@@ -1,0 +1,36 @@
+{
+  "name": "gerador-certificados",
+  "version": "1.0.0",
+  "description": "Gerador de Certificados a partir de planilha Excel",
+  "main": "main.js",
+  "author": "Seu Nome",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "node setup.js",
+    "setup": "node setup.js",
+    "start": "electron .",
+    "dist:win": "electron-builder --win"
+  },
+  "build": {
+    "appId": "br.com.geradorcertificados.app",
+    "productName": "Gerador de Certificados",
+    "directories": { "output": "build" },
+    "files": ["main.js", "index.html", "libs/**/*"],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Gerador de Certificados"
+    }
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  }
+}
